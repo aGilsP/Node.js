@@ -11,7 +11,7 @@ var writeHeadBody = function (res) {
     '<html>' +
     '    <head>' +
     '        <meta charset="utf-8" />' +
-    '        <title>Ma page Node.js !</title>' +
+    '        <title>Ces chers choristes !</title>' +
     //'        <link rel="stylesheet" href="code.css" type="text/css">' +
     '    </head>' +
     '    <body>' +
@@ -35,19 +35,20 @@ var processData = function (res, data) {
 var server = http.createServer(function (req, res) {
   var page = url.parse(req.url).pathname;
   //var params = querystring.parse(url.parse(req.url).query);
-  
+
   res.writeHead(200, {"Content-Type": "text/html"});
 
   if (restPath === page.toString()) {
     var client = new Client();
-    client.get(restUrl+restPath, function (data, response) {
+    client.get(restUrl + restPath, function (data, response) {
       writeHeadBody(res);
       processData(res, data);
       res.write('</body></html>');
 
       res.end();
     });
-  };
+  }
+  ;
 
 });
 server.listen(8081);
